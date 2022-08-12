@@ -1,0 +1,28 @@
+<%- include("partials/headers"); %>
+<h1>
+	TO ADD NEW PRODUCT
+</h1>
+<div>
+	<form action="/create-prod/<%=userdata._id %>" method="POST">
+		<div class="form-group">
+			<input class="form-control" type="text" name="prodname" placeholder="ProductName">
+		</div>
+		<div class="form-group">
+			<input type="form-control" type="text" name="prodlink" placeholder="Prodimage">
+		</div>
+		<div class="form-group">
+			<input type="form-control" type="text" name="prodprice" placeholder="Price">
+		</div>
+		<div class="form-group">
+			<input type="form-control" type="text" name="sellername" value="<%= userdata.username %>">
+		</div>
+		<div class="form-group">
+			<input type="form-control" type="text" name="sellerphnno" value="<%= userdata.phoneno %>">
+		</div>
+		<div  class="form-group">
+			<button class="btn btn-primary btn-block">
+				SUBMIT
+			</button>
+		</div>
+	</form>
+</div>

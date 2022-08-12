@@ -1,0 +1,47 @@
+ <%- include("partials/headers");-%>
+
+<div class="container">
+ <header class="jumbotron">
+	 <div class="container">
+		 <h1>
+	  WELCOME TO SHOPPINGSITE
+        </h1>
+		 
+	 <p>
+		
+		 <% if(!currentUser){ %>
+					 <a href="/user">USER DETAILS</a>
+			<% } else { %>
+				<a href="/create-prod/<%= currentUser._id %>">ADD NEW PRODUCT</a>    
+			<% } %>
+	
+		 </p>
+		 
+	 <h3>
+	 <a href="/showcart">Show Cart</a>	 
+	</h3>
+	 </div>
+ </header>
+	 
+ <div class="row mt-4 justify-content-md-center">
+   <% product.forEach(function(data){%>
+     <div class="col-md-3 col-sm-6 mt-4 ">	
+			<div class="card" >
+    			<img class="card-img-top rounded img-fluid img-thumbnail" style="width:300px;height:200px;" src="<%=data.image%>">
+				<div class="card-body">
+   						 <h4 class="card-title"><%= data.name %></h4>
+   						 <h2 class="badge badge-success"><%= data.price %></h2><br/>
+						<a href="/prod/<%=data._id%>" >MORE INFO</a>
+					<form action ="/deleteprod/<%= data._id%>?_method=DELETE" method="POST">
+						<button>
+						Delete
+					</button>
+					</form>
+  				</div>
+			</div>
+	
+	 </div>
+	<%});%>
+  </div>
+	 
+</div>

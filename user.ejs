@@ -1,0 +1,35 @@
+<%- include("partials/headers");-%>
+
+<div class="container">
+ <header class="jumbotron">
+	 <div class="container">
+		 <h1>
+	  WELCOME TO SHOPPINGSITE
+        </h1>
+		 
+	 <p>
+		<a href="/create-prod">ADD NEW PRODUCT</a> 
+		 <a href="/user">USER DETAILS</a>
+	 </p>
+	 </div>
+ </header>
+	 
+ <ul>
+    <%user.forEach(function(data){%>
+     
+		
+		                   
+	 <li><h2><%= data.username %></h2></li>
+	 <li><h3><%= data.password %></h3></li>
+	 <li><h3><%= data.email %></h3></li>
+	 <li> <h3><%= data.phoneno %></h3><a href="/chat/:id">Chat</a></li>
+		<form action ="/deleteuser/<%= data._id%>?_method=DELETE" method="POST">
+						<button>
+						Delete
+					</button>
+	 </form>
+    <li> <p>**************</p></li>
+	 
+    <%});%>
+	</ul>
+</div>

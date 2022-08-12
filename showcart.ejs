@@ -1,0 +1,73 @@
+<%- include("partials/headers");-%>
+
+<div class="container">
+			<div class="rounded" style="background-color:#100e0e;color:#d9a8a8;padding-left:20px">
+					  <h3><%=user.username%></h3>
+			        <p><strong><%= user.phoneno%></strong></p>
+	        </div>
+			
+				
+	         <% if (user.cart.length == 0) { %>
+		        <p class="text-white rounded shadow-lg p-4  bg-body border border-5" style="background-color:#af2179;font-size:250%">
+					Sorry!The cart is empty
+				</p>
+	       
+			<% } else { %>
+			<div class="container-fluid">
+				<div class="container">
+				<div class="row">
+    			<div class="col-md-8"  >
+	        	<%user.cart.forEach(function(cart){%>
+				
+				<div class="row  mt-4  rounded" style="background-color:#E6E6FA;color:red" >
+   					<div class="col col-lg-4">
+    					 <img src="<%= cart.productimg%>" class="card-img-top rounded img-fluid img-thumbnail" style="width:160px;height:180px;" >
+    				</div>
+    				<div class="col col-lg-5">	
+					 	
+					<div class="row mt-1 " >
+						<p class="fs-3" >ProductName  :
+     					<strong><%= cart.productname %></strong></p>
+    				</div>
+						
+   					<div class="row mt-1 " >
+						<p class="fs-3">ProductPrice  :
+		  				<strong><%= cart.productprice %></strong></p>
+    				</div>
+	  				<div class="row mt-1 ">
+						<p class="fs-3" >ProductQty  :
+		  				<strong><%= cart.productqty %></strong></p>
+    				</div>
+    				<div class="row mt-1 ">
+						<p class="fs-3"  >TotalPrice  :
+      					<strong><%= cart.totalprice %></strong>
+    				</div>
+						</div>
+							<% user.totalcartprice = user.totalcartprice+ cart.totalprice%>
+						<div class="col col-lg-3 ">
+					<form action ="/delete/<%= cart._id%>?_method=DELETE" method="POST" class="pt-5">
+						<button  class="btn btn-info">
+						Delete
+							<span><i class="fa fa-trash" aria-hidden="true"></i></span>
+					</button>
+					</form>
+						
+					</div>
+				</div>
+		     	<%})%> 
+					
+					</div>
+						<div class="col-md-3 mx-4 mt-4 rounded" style="background-color:#871345;color:#F5F5F5;font-size:180%;height:100%">
+						Bill Price:<hr>
+						<div class="mt-2 mx-5  p-1 rounded-circle font-weight-bold " style="font-size:100%">
+						  Rs. <%= user.totalcartprice%>
+						</div>
+					
+					</div>
+					
+				 </div>
+				</div>
+				</div>
+	        <%}%>
+		
+</div>

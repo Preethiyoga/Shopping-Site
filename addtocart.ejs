@@ -1,0 +1,28 @@
+<%- include("partials/headers"); %>
+<h1>
+	TO ADD NEW PRODUCT
+</h1>
+<div>
+	<form action="/addtocart/<%=product._id %>" method="POST">
+		 <div class="form-group">
+			<input class="form-control" type="text" name="prodimg" value="<%=product.image %>">
+		</div> 
+		<div class="form-group">
+			<input class="form-control" type="text" name="prodname" value="<%=product.name %>">
+		</div>
+		<div class="form-group">
+			<input type="form-control" type="text" name="prodprice" value="<%=product.price %>">
+		</div>
+		<div class="form-group">
+			<input type="form-control" type="text" name="qty" placeholder="Quantity" >
+		</div>
+		<!-- <div class="form-group">
+			<input type="form-control" type="text" name="totprice" placeholder="Total price">
+		</div> -->
+		<div  class="form-group">
+			<button class="btn btn-primary btn-block">
+				SUBMIT
+			</button>
+		</div>
+	</form>
+</div>
